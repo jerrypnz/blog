@@ -37,6 +37,8 @@ UnicodeEncodeError: 'ascii' codec can't encode \
 简简单单打印一个 Unicode 对象，直接输出不会报错，但重定向到文件就会挂掉，
 这实在让人想“呵呵”。
 
+<!--more-->
+
 一番 Google 之后在 [Stackoverflow][1] 上找到了答案。原来 Python 2 里的
 print 会针对 unicode 参数进行自动 encode。如果输出的目标是一个终端，它
 会使用终端的编码（可通过 `sys.stdout.encoding` 获得）；如果输出的目标是

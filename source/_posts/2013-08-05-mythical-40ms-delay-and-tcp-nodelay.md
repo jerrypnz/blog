@@ -14,15 +14,18 @@ tags:
   - TCP/IP
   - TCP_NODELAY
 ---
+
+最近的业余时间几乎全部献给
+[breeze](https://github.com/moonranger/breeze) 这个多年前挖 下的大坑——
+一个异步 HTTP Server。努力没有白费，项目已经逐渐成型了， 基本的框架已经
+有了，一个静态 文件模块也已经实现了。
+
+写 HTTP Server，不可免俗地一定要用 ab 跑一下性能，结果一跑不打紧，出现
+了一个困扰了我好几天的问题：神秘的 40ms 延迟。
+
+<!--more-->
+
 <div id="content">
-  <p>
-    最近的业余时间几乎全部献给 <a href="https://github.com/moonranger/breeze">breeze</a> 这个多年前挖下的大坑——一个异步 HTTP Server。努力没有白费，项目已经逐渐成型了，基本的框架已经有了，一个静态 文件模块也已经实现了。
-  </p>
-  
-  <p>
-    写 HTTP Server，不可免俗地一定要用 ab 跑一下性能，结果一跑不打紧，出现 了一个困扰了我好几天的问题：神秘的 40ms 延迟。
-  </p>
-  
   <div id="table-of-contents">
     <h2>
       Table of Contents

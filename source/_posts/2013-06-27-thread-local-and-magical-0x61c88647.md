@@ -18,6 +18,8 @@ tags:
 
 回来以后赶紧翻开源代码验证一下，以下是我的发现。
 
+<!--more-->
+
 ## ThreadLocal 的原理
 
 ThreadLocal，意味着是线程本地的，如果实现层面引入一个让线程共享访问的 Map，岂不很蠢。事实上，Java 1.4 之前的 ThreadLocal 实现好像就是有问题的。目前版本的<span style="line-height: 1.714285714; font-size: 1rem;"> ThreadLocal 的实现则不会引入任何线程间的竞争（唯一共享的 Id 生成器也是个 AtomicInteger），其机制是这样的：</span>

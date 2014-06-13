@@ -22,6 +22,8 @@ Clojure 里的 `apply` 是十分常用的一个函数，它可以方便地让我
 
 罪魁祸首就是这里的 `apply` ！可以看到这句代码的逻辑就是读取 stream 中的 collection 并将其作为参数传给 `hash-map` 函数用来创建 map，其中 `coll-thaw!` 返回的是一个包含 所有 key/value 的 lazy seq，而在我的场景 里，这样的 map 是十分庞大的，包含几百万的数据。
 
+<!--more-->
+
 重点来了：通过分析 `apply` 的源代码，我发现对于变参函数， `apply` 会将 整个seq 全部 realize 之后放到一个 Object 数组里，再调用目标函数：
 
 <pre class="example">static public Object applyToHelper(IFn ifn, ISeq arglist) {
