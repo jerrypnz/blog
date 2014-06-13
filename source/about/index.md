@@ -1,17 +1,20 @@
 ---
 title: About
-author: Jerry
 layout: page
+comments: true
+sharing: true
+footer: true
 ---
-Jerry、游侠之心、moonranger，这些都是我常用的网络ID。我是85后 IT 男，北漂湖北人，在一家电信行业软件公司工作。
+Jerry、游侠之心、moonranger，这些都是我常用的网络ID。我是85后 IT 男，北漂湖北人，曾
+在电信行业工作多年，目前在[自由飞越](http://www.ufeifan.com)从事国际机票检索引擎相关工作。
 
 业余时间喜欢研究众多编程技术，其中：
 
 *   极度欣赏 UNIX 哲学，爱玩 Linux，除了娱乐之外不愿碰 M$ Windows
-*   Python 爱好者
-*   Lisp 控——虽然基本没写过“正统”的 Lisp 代码
 *   Clojure 狂热分子，恨不得用它替代 Java 写所有的生产代码
+*   Lisp 控——虽然基本没写过“正统”的 Lisp 代码
 *   混饭工具 Java 也正在深入学习中，目前在研究JVM原理、GC 和 Performance Tuning 中
+*   Python 爱好者
 *   对Web开发略有涉足，HTML，JavaScript和CSS略有了解
 *   前 Vimer，现 Emacser
 
