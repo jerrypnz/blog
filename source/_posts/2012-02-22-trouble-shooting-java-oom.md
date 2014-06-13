@@ -1,6 +1,7 @@
 ---
 title: 记一次OOM的排查过程
 author: Jerry
+comments: true
 layout: post
 permalink: /2012/02/trouble-shooting-java-oom/
 categories:

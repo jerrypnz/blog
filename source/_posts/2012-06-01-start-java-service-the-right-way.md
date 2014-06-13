@@ -1,6 +1,7 @@
 ---
 title: 用正确的方式启动Java服务
 author: Jerry
+comments: true
 layout: post
 permalink: /2012/06/start-java-service-the-right-way/
 categories:

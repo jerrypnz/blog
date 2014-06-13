@@ -1,6 +1,7 @@
 ---
 title: 玩玩 Continuation（1）
 author: Jerry
+comments: true
 layout: post
 permalink: /2013/01/playing-continuation-part1/
 categories:

@@ -1,6 +1,7 @@
 ---
 title: 用Sphinx生成中文PDF
 author: Jerry
+comments: true
 layout: post
 permalink: /2011/12/sphinx-chinese-pdf/
 categories:

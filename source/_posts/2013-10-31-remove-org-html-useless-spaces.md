@@ -1,6 +1,7 @@
 ---
 title: 去除 org-mode 输出 HTML 时多余的空格
 author: Jerry
+comments: true
 layout: post
 permalink: /2013/10/remove-org-html-useless-spaces/
 categories:

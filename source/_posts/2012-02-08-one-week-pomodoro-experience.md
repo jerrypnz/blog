@@ -1,6 +1,7 @@
 ---
 title: 番茄时间：一周体验心得
 author: Jerry
+comments: true
 layout: post
 permalink: /2012/02/one-week-pomodoro-experience/
 categories:

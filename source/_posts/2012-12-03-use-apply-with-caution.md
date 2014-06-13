@@ -1,6 +1,7 @@
 ---
 title: 小心 Clojure 的 apply
 author: Jerry
+comments: true
 layout: post
 permalink: /2012/12/use-apply-with-caution/
 categories:

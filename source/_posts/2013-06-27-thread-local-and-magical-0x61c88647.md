@@ -1,6 +1,7 @@
 ---
 title: ThreadLocal 和神奇的 0x61c88647
 author: Jerry
+comments: true
 layout: post
 permalink: /2013/06/thread-local-and-magical-0x61c88647/
 categories:

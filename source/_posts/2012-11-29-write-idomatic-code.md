@@ -1,6 +1,7 @@
 ---
 title: 写出 Idiomatic 的代码
 author: Jerry
+comments: true
 layout: post
 permalink: /2012/11/write-idomatic-code/
 categories:

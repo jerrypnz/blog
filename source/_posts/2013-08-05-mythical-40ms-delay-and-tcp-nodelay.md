@@ -1,6 +1,7 @@
 ---
 title: 神秘的40毫秒延迟与 TCP_NODELAY
 author: Jerry
+comments: true
 layout: post
 permalink: /2013/08/mythical-40ms-delay-and-tcp-nodelay/
 categories:

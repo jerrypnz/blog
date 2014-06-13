@@ -1,6 +1,7 @@
 ---
 title: 在nginx上配置WordPress的Pretty Permlink
 author: Jerry
+comments: true
 layout: post
 permalink: /2012/01/nginx-wp-permlink/
 categories:

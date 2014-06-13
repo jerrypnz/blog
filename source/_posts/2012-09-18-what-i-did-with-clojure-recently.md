@@ -1,6 +1,7 @@
 ---
 title: 最近在用Clojure做的事情
 author: Jerry
+comments: true
 layout: post
 permalink: /2012/09/what-i-did-with-clojure-recently/
 categories:

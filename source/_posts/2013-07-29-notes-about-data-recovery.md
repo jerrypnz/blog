@@ -1,6 +1,7 @@
 ---
 title: 记一次数据恢复过程
 author: Jerry
+comments: true
 layout: post
 permalink: /2013/07/notes-about-data-recovery/
 categories:

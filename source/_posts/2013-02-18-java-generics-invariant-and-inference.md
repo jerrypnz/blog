@@ -1,6 +1,7 @@
 ---
 title: 小探 Java 泛型系统的不协变问题和类型推断
 author: Jerry
+comments: true
 layout: post
 permalink: /2013/02/java-generics-invariant-and-inference/
 categories:

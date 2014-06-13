@@ -1,6 +1,7 @@
 ---
 title: 玩转Emacs的auto-complete
 author: Jerry
+comments: true
 layout: post
 permalink: /2012/10/play-emacs-auto-complete/
 categories:

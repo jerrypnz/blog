@@ -1,6 +1,7 @@
 ---
 title: Cron 导致的乱码问题
 author: Jerry
+comments: true
 layout: post
 permalink: /2013/08/mojibake-caused-by-cron/
 categories:

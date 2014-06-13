@@ -1,6 +1,7 @@
 ---
 title: 又被 Python 的 Unicode 坑了
 author: Jerry
+comments: true
 layout: post
 permalink: /2014/02/python-2-unicode-print-pitfall/
 categories:

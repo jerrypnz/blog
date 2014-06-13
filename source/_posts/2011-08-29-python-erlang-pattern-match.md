@@ -1,6 +1,7 @@
 ---
 title: 用Python山寨一个Erlang风格的模式匹配
 author: Jerry
+comments: true
 layout: post
 permalink: /2011/08/python-erlang-pattern-match/
 views:
@@ -12,43 +13,61 @@ tags:
   - Pattern Match
   - Python
 ---
-## 1. Intro {#toc_1.1}
 
-最近在做的项目，是一个用Python实现的代理程序，服务端程序是另一个同事用Erlang实现的。虽然我对Erlang了解不多，但对其必杀特性之一模式匹配（Pattern Matching）早有耳闻，因此花了点时间了解了一下。模式匹配是Erlang语言的核心特性之一，在case, receive等语句中都可以使用，但这篇文章只考虑函数定义中的模式匹配，因为我试图用Python去山寨的也是这一特性。
+## 1. Intro
 
-模式匹配是用声明式的风格来描述本来需要用一连串的if&#8230;else&#8230;才能表达的逻辑，方便维护和修改。下面这段从learnyousomeerlang网站上找到的代码是一个很好的例子（原文:<http://learnyousomeerlang.com/syntax-in-functions>)：
+最近在做的项目，是一个用Python实现的代理程序，服务端程序是另一个同事用
+Erlang实现的。虽然我对Erlang了解不多，但对其必杀特性之一模式匹配
+（Pattern Matching）早有耳闻，因此花了点时间了解了一下。模式匹配是
+Erlang语言的核心特性之一，在case, receive等语句中都可以使用，但这篇文章
+只考虑函数定义中的模式匹配，因为我试图用Python去山寨的也是这一特性。
 
-通常的if&#8230;else&#8230;式写法：
+模式匹配是用声明式的风格来描述本来需要用一连串的if&#8230;else&#8230;才
+能表达的逻辑，方便维护和修改。下面这段从learnyousomeerlang网站上找到的
+代码是一个很好的例子（原
+文:<http://learnyousomeerlang.com/syntax-in-functions>)：
 
-<pre lang="erlang">function greet(Gender,Name)
+通常的 if&#8230;else&#8230; 式写法：
+
+```erlang
+function greet(Gender,Name)
     if Gender == male then
         print("Hello, Mr. %s!", Name)
     else if Gender == female then
         print("Hello, Mrs. %s!", Name)
     else
         print("Hello, %s!", Name)
-end</pre>
+end
+```
 
 使用模式匹配的写法：
 
-<pre lang="erlang">greet(male, Name) ->;
+```erlang
+greet(male, Name) ->;
     io:format("Hello, Mr. ~s!", [Name]);
 greet(female, Name) ->;
     io:format("Hello, Mrs. ~s!", [Name]);
 greet(_, Name) ->;
-    io:format("Hello, ~s!", [Name]).</pre>
+    io:format("Hello, ~s!", [Name]).
+```
 
-基于函数的模式匹配乍一看有点像Java，C++里函数重载，但函数重载是静态语言的编译时特性，模式匹配则完全是运行时行为。模式匹配的更多细节可以参考Erlang的教程、文章，这里不再详述。
+基于函数的模式匹配乍一看有点像Java，C++里函数重载，但函数重载是静态语言
+的编译时特性，模式匹配则完全是运行时行为。模式匹配的更多细节可以参考
+Erlang的教程、文章，这里不再详述。
 
 下面介绍如何用Python实现一个最简单的模式匹配功能。
 
-## 2. What It Looks Like {#toc_1.2}
+## 2. What It Looks Like
 
-第一个要考虑的问题是如何用Python已有的语言特性来表达模式匹配。因为Python的函数不支持这种特性，所以必须要将函数强化一下才有可能实现模式匹配。毫无疑问，decorator必然会派上用场的。decorator本身是支持参数化构造的——这意味着用decorator的参数来表达模式最合适不过了。
+第一个要考虑的问题是如何用Python已有的语言特性来表达模式匹配。因为
+Python的函数不支持这种特性，所以必须要将函数强化一下才有可能实现模式匹
+配。毫无疑问，decorator必然会派上用场的。decorator本身是支持参数化构造
+的——这意味着用decorator的参数来表达模式最合适不过了。
 
 顺着这个思路，上面那段函数定义的等价Python实现可以出炉了：
 
-<pre lang="python">@match("male")
+```python
+@match("male")
 def greet(male, name):
     print "Hello, Mr. %s" % name
 
@@ -58,23 +77,31 @@ def greet(female, name):
 
 @match()
 def greet(_, name):
-    print "Hello, %s" % name</pre>
+    print "Hello, %s" % name
+```
 
-match这个装饰器的目的就是为对应的函数描述其需要满足的Pattern，match的参数和函数本身的参数对应，但可能少于函数实际参数的个数，因为并不是每一个参数都需要做模式匹配。比如上面头两个greet函数都只匹配第一个参数的值。关于这一点，看函数调用的写法就能明白了：
+match这个装饰器的目的就是为对应的函数描述其需要满足的Pattern，match的参
+数和函数本身的参数对应，但可能少于函数实际参数的个数，因为并不是每一个
+参数都需要做模式匹配。比如上面头两个greet函数都只匹配第一个参数的值。关
+于这一点，看函数调用的写法就能明白了：
 
-<pre lang="python">greet('male', 'Cooper')
+```python
+greet('male', 'Cooper')
 greet('female', 'Geller')
-greet('', 'Drizzt')</pre>
+greet('', 'Drizzt')
+```
 
 运行结果：
 
-<pre>Hello, Mr. Cooper
+```
+Hello, Mr. Cooper
 Hello, Mrs. Geller
-Hello, Drizzt</pre>
+Hello, Drizzt
+```
 
 现在的问题是如何实现match这个decorator了。
 
-## 3. How It Is Implemented {#toc_1.3}
+## 3. How It Is Implemented
 
 基本的思路是这样的：
 
@@ -84,7 +111,8 @@ Hello, Drizzt</pre>
 
 下面是对应的代码：
 
-<pre lang="python">class PatternError(Exception):
+```python
+class PatternError(Exception):
     pass
 
 class _PatternGroup(object):
@@ -129,7 +157,8 @@ def match(*args, **kwargs):
             matcher = _PatternGroup()
             _PatternGroup.patterns_matchers[fname] = matcher
             return matcher._add_pattern(fn, *args, **kwargs)
-    return _do_match</pre>
+    return _do_match
+```
 
 非常简陋，还有很多问题：
 
@@ -137,11 +166,13 @@ def match(*args, **kwargs):
 2.  因为self的缘故，不支持class的instance method
 3.  match的算法很简陋，找到第一个能匹配上的就返回了，实际应该找到最匹配的函数
 
-实现完以后发现这个东西没有太多实用价值，只能当作玩具而已，在这里记录下来，当作分享自己探索和玩乐的过程。
+实现完以后发现这个东西没有太多实用价值，只能当作玩具而已，在这里记录下
+来，当作分享自己探索和玩乐的过程。
 
-完整的源代码：<https://github.com/moonranger/python/blob/master/practice/pattern_match.py>
+完整的源代码：
+<https://github.com/moonranger/python/blob/master/practice/pattern_match.py>
 
-## 4. What Others Have Done {#toc_1.4}
+## 4. What Others Have Done
 
 在实现完自己的简单Pattern Matching后，我也在Google上搜索了一番，还真有人跟我做了同样的事情，  
 而且比我的要成熟得多，有兴趣的话可以看看人家的实现。

@@ -1,6 +1,7 @@
 ---
 title: Python Unicode字符串格式化中的一个陷阱
 author: Jerry
+comments: true
 layout: post
 permalink: /2012/03/python-unicode-format-pitfall/
 categories:

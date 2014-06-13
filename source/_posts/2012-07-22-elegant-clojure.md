@@ -1,6 +1,7 @@
 ---
 title: 优雅的Clojure——读clj-http源码有感
 author: Jerry
+comments: true
 layout: post
 permalink: /2012/07/elegant-clojure/
 categories:

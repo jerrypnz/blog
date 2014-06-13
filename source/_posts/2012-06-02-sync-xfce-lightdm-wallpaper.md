@@ -1,6 +1,7 @@
 ---
 title: 自动同步Xfce和LightDM的墙纸
 author: Jerry
+comments: true
 layout: post
 permalink: /2012/06/sync-xfce-lightdm-wallpaper/
 categories:
