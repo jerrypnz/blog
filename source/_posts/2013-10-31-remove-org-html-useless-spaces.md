@@ -24,7 +24,7 @@ tags:
 org-mode 生成段落 HTML 的函数执行之前，把段落里的中文文字之间的空格去除
 掉。代码如下：
 
-```elisp
+```cl
 (defadvice org-html-paragraph (before fsh-org-html-paragraph-advice 
                                       (paragraph contents info) activate) 
   "Join consecutive Chinese lines into a single long line without 
