@@ -13,6 +13,7 @@ tags:
   - LANG
   - Linux
   - 乱码
+keywords: cron, crontab, LANG, Linux, 乱码
 ---
 
 几天前为公司的生产环境写了个应用内存监控工具，定时通过 jstat 查看当前机

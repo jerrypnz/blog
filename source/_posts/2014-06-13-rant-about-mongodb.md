@@ -7,6 +7,7 @@ categories:
   - 技术
 tags:
   - MongoDB
+keywords: MongoDB, NoSQL, Database
 ---
 
 首先声明，我们对 MongoDB 的使用谈不上深入，我更是没有太多经验，所以下

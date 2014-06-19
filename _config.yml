@@ -7,7 +7,8 @@ title: Jerry's Blog
 subtitle: 短暂停留，把思绪持久在这片小小天地中
 author: Jerry Peng
 simple_search: https://www.google.com/search
-description: 
+description: Jerry 的技术博客
+keywords: Jerry Peng, Java, Clojure, Python, Linux, Emacs
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in

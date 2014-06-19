@@ -11,6 +11,7 @@ tags:
   - Concurrency
   - Java
   - ThreadLocal
+keywords: Java, 并发, 线程本地, ThreadLocal, Concurrency
 ---
 我之前提到说想把找工作面试过程中被问到的一些问题进行一下整理和记录，借刚刚完成一个小feature 的空闲时间开始第一篇吧。这一次的主题是 ThreadLocal，以及在探索过程中发现的一个很神奇的魔数 0x61c88647。
 

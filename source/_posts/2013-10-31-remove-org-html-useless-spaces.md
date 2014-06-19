@@ -9,6 +9,7 @@ categories:
 tags:
   - Emacs
   - org-mode
+keywords: Emacs, org-mode, 空格
 ---
 
 用 org-mode 写文档、写 slides 有一段时间了，org-mode + Tex Live 这个组

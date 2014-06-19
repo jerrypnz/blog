@@ -11,6 +11,7 @@ tags:
   - Generics
   - Java
   - Type System
+keywords: Java, 泛型, 类型系统, Generics
 ---
 这个问题起源于最近在生产代码中写下的这样一个方法：
 

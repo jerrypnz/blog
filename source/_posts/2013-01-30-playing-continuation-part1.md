@@ -14,6 +14,7 @@ tags:
   - Scheme
   - TR-069
   - Web
+keywords: Clojure, Continuation, Racket, Scheme
 ---
 
 警告：本文可能包含一些错误/不准确的扯淡，如果发现说得不对的，欢迎指正。

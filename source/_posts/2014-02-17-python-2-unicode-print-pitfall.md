@@ -10,6 +10,7 @@ categories:
 tags:
   - Python
   - Unicode
+keywords: Python, Unicode
 ---
 
 很久没更新博客了，不是没什么可写，而是因为工作生活的种种原因没有心情更

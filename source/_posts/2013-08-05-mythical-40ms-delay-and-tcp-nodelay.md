@@ -13,6 +13,7 @@ tags:
   - Linux
   - TCP/IP
   - TCP_NODELAY
+keywords: breeze, C, Linux, TCP/IP, TCP_NODELAY, 40ms
 ---
 
 最近的业余时间几乎全部献给

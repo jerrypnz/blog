@@ -9,6 +9,7 @@ tags:
   - GoDaddy
   - Namecheap
   - 域名
+keywords: GoDaddy, Namecheap
 ---
 
 早上收到 DNSPod 的告警邮件提示域名快要过期时，我才意识到一年一度的域名
