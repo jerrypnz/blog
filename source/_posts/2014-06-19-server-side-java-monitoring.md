@@ -4,7 +4,7 @@ title: Java 服务端监控方案（一. 综述篇）
 date: 2014-06-19 21:18:09 +0800
 comments: true
 categories: Java
-tags: Java, 监控, Linux
+tags: Java, 监控, Linux, Ganglia
 keywords: Java, Monitor, Linux, Server, Ganglia, Nagios, JMX, jmxtrans
 description: 服务端应用的重要一环是监控，本文介绍 Java 的服务端监控解决方案，基于 Ganglia，Nagios 和 JMX。
 ---
