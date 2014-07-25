@@ -26,7 +26,7 @@ Eclipse 的 Java 编译器会在 Java 源文件有错误的情况下仍旧生成
 
 
 ```java
-package com.trafree;
+package com.foobar;
 
 public class Foobar {
 
@@ -42,19 +42,19 @@ Eclipse 为其生成的 Class 文件中的字节码如下：
 
 
 ```sh
-[~/dev/workspace/amadeus/bin]$ javap -l -c -constants com.trafree.Foobar                                               
+[~/dev/workspace/foobar/bin]$ javap -l -c -constants com.foobar.Foobar
 Compiled from "Foobar.java"
-public class com.trafree.Foobar {
-  public com.trafree.Foobar();
+public class com.foobar.Foobar {
+  public com.foobar.Foobar();
     Code:
-       0: aload_0       
+       0: aload_0     
        1: invokespecial #8        // Method java/lang/Object."<init>":()V
-       4: return        
+       4: return      
     LineNumberTable:
       line 4: 0
     LocalVariableTable:
       Start  Length  Slot  Name   Signature
-             0       5     0  this   Lcom/trafree/Foobar;
+             0       5     0  this   Lcom/foobar/Foobar;
 
   public static void main(java.lang.String[]);
     Code:
@@ -84,10 +84,10 @@ Unresolved compilation problem:
 
 
 ```java
-package com.trafree;
+package com.foobar;
 
 // NonExistent 是个不存在的类
-import com.trafree.NonExistent;
+import com.foobar.NonExistent;
 
 public class ServletUtil {
 
@@ -102,21 +102,21 @@ public class ServletUtil {
 
 
 ```sh
-[~/dev/workspace/amadeus/bin]$ javap -l -c -constants com.trafree.ServletUtil                                          
+[~/dev/workspace/foobar/bin]$ javap -l -c -constants com.foobar.ServletUtil
 Compiled from "ServletUtil.java"
-public class com.trafree.ServletUtil {
-  public com.trafree.ServletUtil();
+public class com.foobar.ServletUtil {
+  public com.foobar.ServletUtil();
     Code:
        0: new           #8                  // class java/lang/Error
        3: dup           
-       4: ldc           #10                 _/ String Unresolved compilation problems: \n\tThe import com.trafree.NonExistent cannot be resolved\n\tNonExistent cannot be resolved to a type\n\tNonExistent cannot be resolved to a type\n
+       4: ldc           #10                 _/ String Unresolved compilation problems: \n\tThe import com.foobar.NonExistent cannot be resolved\n\tNonExistent cannot be resolved to a type\n\tNonExistent cannot be resolved to a type\n
        6: invokespecial #12                 /_ Method java/lang/Error."<init>":(Ljava/lang/String;)V
        9: athrow        
     LineNumberTable:
       line 3: 0
     LocalVariableTable:
       Start  Length  Slot  Name   Signature
-             0      10     0  this   Lcom/trafree/ServletUtil;
+             0      10     0  this   Lcom/foobar/ServletUtil;
 
   public void doSomething();
     Code:
@@ -129,7 +129,7 @@ public class com.trafree.ServletUtil {
       line 8: 0
     LocalVariableTable:
       Start  Length  Slot  Name   Signature
-             0      10     0  this   Lcom/trafree/ServletUtil;
+             0      10     0  this   Lcom/foobar/ServletUtil;
 }
 
 ```
@@ -140,7 +140,7 @@ public class com.trafree.ServletUtil {
 
 ```java
 Unresolved compilation problems:
-    The import com.trafree.NonExistent cannot be resolved
+    The import com.foobar.NonExistent cannot be resolved
     NonExistent cannot be resolved to a type
 ```
 
