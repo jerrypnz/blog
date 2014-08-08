@@ -448,3 +448,9 @@ collection_group {
 
 - [SETUP AND CONFIGURE GANGLIA-3.6 ON CENTOS/RHEL 6.3](http://sachinsharm.wordpress.com/2013/08/17/setup-and-configure-ganglia-3-6-on-centosrhel-6-3/)
 - [Monitoring multiple clusters using Ganglia](http://jablonskis.org/2011/monitoring-multiple-clusters-using-ganglia/index.html)
+
+### 系列文章导航
+
+- [Java 服务端监控方案（一. 综述篇）]({% post_url 2014-06-19-server-side-java-monitoring %})
+- [Java 服务端监控方案（三. Nagios 篇）]({% post_url 2014-07-22-server-side-java-monitoring-nagios %})
+- [Java 服务端监控方案（四. Java 篇）]({% post_url 2014-08-08-server-side-java-monitoring-java %})

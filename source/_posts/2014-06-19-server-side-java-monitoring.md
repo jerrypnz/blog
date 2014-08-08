@@ -26,7 +26,8 @@ description: 服务端应用的重要一环是监控，本文介绍 Java 的服�
 
 对于第一个方面，其实就是要做到出了故障第一时间告警，从而能让系统在半夜
 出现问题的时候能一条短信把可怜的运维同学叫起来恢复服务。这件事，
-[Nagios](http://www.nagios.org/)基本上是最佳解决方案。它有花样繁多的各
+[Nagios](http://www.nagios.org/)
+基本上是最佳解决方案。它有花样繁多的各
 种插件，并且编写自定义插件也极其简单，可以很方便地监控从操作系统到应用
 的方方面面。其配置文件简洁易懂，且十分强大，稍加熟悉就可以很容易根据自
 己的需要去配置。
@@ -61,9 +62,15 @@ Ganglia 和 Nagios 可以直接监控到系统层面的运行状况如 CPU，Loa
 JMX 数据，并发送给 Ganglia 或者 Graphite 这种后端。在 Java 和 JMX 部分，
 我会详细介绍。
 
-最近还发现了一个名叫 [Metrics](http://metrics.codahale.com/)的 Java 库，
+最近还发现了一个名叫 [Metrics](http://metrics.codahale.com/) 的 Java 库，
 可以方便开发者来编写应用监控相关代码，并且它直接支持 Ganglia 和
 Graphite 后端。如果不是必须使用 JMX 的话，这会是一个更简洁的替代方案。
 
 简要介绍就到这里了，请期待后面针对 Ganglia、Nagios 和 Java 监控的更详
 细介绍。
+
+### 系列文章导航
+
+- [Java 服务端监控方案（二. Ganglia 篇）]({% post_url 2014-07-04-server-side-java-monitoring-ganglia %})
+- [Java 服务端监控方案（三. Nagios 篇）]({% post_url 2014-07-22-server-side-java-monitoring-nagios %})
+- [Java 服务端监控方案（四. Java 篇）]({% post_url 2014-08-08-server-side-java-monitoring-java %})

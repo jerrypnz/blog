@@ -385,3 +385,9 @@ define service{
 有了这些基础系统，剩下的与 Java 有关的事情就简单了，无非是想法办法记录
 应用内的一些监控参数，并整合到 Ganglia 里而已。下一次我就详细对这个进
 行介绍，并分享我们的经验。
+
+### 系列文章导航
+
+- [Java 服务端监控方案（一. 综述篇）]({% post_url 2014-06-19-server-side-java-monitoring %})
+- [Java 服务端监控方案（二. Ganglia 篇）]({% post_url 2014-07-04-server-side-java-monitoring-ganglia %})
+- [Java 服务端监控方案（四. Java 篇）]({% post_url 2014-08-08-server-side-java-monitoring-java %})
