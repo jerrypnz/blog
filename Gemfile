@@ -19,6 +19,7 @@ group :development do
   gem 'json'
   gem 'execjs'
   gem 'therubyracer'
+  gem 'thin'
 end
 
 gem 'sinatra', '~> 1.4.2'
