@@ -137,14 +137,14 @@ Redis 等，可能就是问题。比如 Nginx 中配置的 Upstream 如果重启
 现动态发现也是个问题。
 
 
-## 5. 结论
+## 4. 结论
 
 对于服务发现和配置管理，我认为是需要迈出的第一步，它可以为更进一步的演
 进扫清障碍。对于 Docker，我目前还是稍微持保守态度一些。只要减小应用对
 环境的依赖，并借助 chef，puppet 之类的配置管理工具，大规模的部署应该一
 样不会太复杂。
 
-## 4. 参考
+## 5. 参考
 
 - Curator Service Discovery 实例：
 http://aredko.blogspot.jp/2013/10/coordination-and-service-discovery-with.html
