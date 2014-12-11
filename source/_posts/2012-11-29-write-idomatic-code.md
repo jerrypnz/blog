@@ -18,7 +18,8 @@ Idiomatic 这个词我还是在学习 Python 的时候在一篇介绍Pythonic �
 
 说了这么多，下面贴出我最终写出来的代码：
 
-<pre lang="java">if (StringUtils.isNotBlank(criteria.getCategory())) {
+```java
+if (StringUtils.isNotBlank(criteria.getCategory())) {
     String[] categories = criteria.getCategory().split(",");
     sql.append(" AND d.CATEGORY in (?");
     args.add(categories[0]);
@@ -28,7 +29,7 @@ Idiomatic 这个词我还是在学习 Python 的时候在一篇介绍Pythonic �
     }
     sql.append(") ");
 }
-</pre>
+```
 
 这是一段很朴实，说实话也挺啰嗦的代码，但是我纠结了半天才写出来的。我在 纠结什么呢？对，就是问号中间的那个逗号的处理。用循环来逐一将 `?` 添加 到 `StringBuilder` 中的时候，总会多出来一个逗号（无论是在前面还是后面）， 解决办法一般是：
 
@@ -44,12 +45,13 @@ Idiomatic 这个词我还是在学习 Python 的时候在一篇介绍Pythonic �
 
 其实想用这个方法的话，最好是能有一个 `repeat` 方法用于生成指定长度的， 内容都是某个元素的列表/数组/迭代器。比如在 Clojure 里，上面的代码可以 写成这个样子（省略了与问题无关的部分）：
 
-<pre lang="clojure">(let [category-list "aaa,bbb,ccc,ddd"
+```clojure
+(let [category-list "aaa,bbb,ccc,ddd"
       categories (string/split category-list #",")]
   (str "AND d.CATEGORY in ("
        (string/join "," (repeat (count categories) "?"))
        ")"))
-</pre>
+```
 
 可以看到一个简单的 join + repeat 就可以解决问题了。可惜的是我这是在写 Java 代码。我找了一圈，没有发现项目中所引用的库有哪个包含此方法（主要参 考的是 guava 库）。
 
@@ -61,7 +63,8 @@ Idiomatic 这个词我还是在学习 Python 的时候在一篇介绍Pythonic �
 
 大意就是说在 Java 里使用函数式风格会导致十分冗长、让人迷惑、不可读的代 码，因为 Java 里没有 First-class Function 。当初看到这段话，我深受震撼， 因为光看 guava 的 API 文档，以为它是鼓励在 Java 里使用函数式风格的。原 文中列举了两段代码，一个是 Java 中的“函数式”风格：
 
-<pre lang="java">Multiset lengths = HashMultiset.create(
+```java
+Multiset lengths = HashMultiset.create(
   FluentIterable.from(strings)
     .filter(new Predicate() {
        public boolean apply(String string) {
@@ -73,17 +76,18 @@ Idiomatic 这个词我还是在学习 Python 的时候在一篇介绍Pythonic �
          return string.length();
        }
      }));
-</pre>
+```
 
 另一个是正常的“命令式”风格：
 
-<pre lang="java">Multiset lengths = HashMultiset.create();
+```java
+Multiset lengths = HashMultiset.create();
 for (String string : strings) {
   if (CharMatcher.JAVA_UPPER_CASE.matchesAllOf(string)) {
     lengths.add(string.length());
   }
 }
-</pre>
+```
 
 对比就能发现，后者其实更加可读。这让我挺震撼的，因为一般认为命令式风格 的可读性比起函数式要差一些。仔细想一想，其实原因很简单：Java 不是一个支 持函数式编程的语言，无论怎么去模拟（用丑陋的匿名内部类），终究不可能比 得上一个原生的函数式编程语言。
 

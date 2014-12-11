@@ -17,8 +17,9 @@ Clojure 里的 `apply` 是十分常用的一个函数，它可以方便地让我
 
 最近大胆在公司的项目中使用了 Clojure 来实现了一个大数据量的分析程序，前 几天上线跑了一阵，效果很好，正高兴呢，今天查日志发现系统在分析月度汇总 数据的时候 OOM 了！今天分析了半天原因，最终定位到了开源 Clojure 序列化 库 [nippy][1] 中的 [这句代码][2] ：
 
-<pre class="example">(apply hash-map (coll-thaw! s))
-</pre>
+```clojure
+(apply hash-map (coll-thaw! s))
+```
 
 罪魁祸首就是这里的 `apply` ！可以看到这句代码的逻辑就是读取 stream 中的 collection 并将其作为参数传给 `hash-map` 函数用来创建 map，其中 `coll-thaw!` 返回的是一个包含 所有 key/value 的 lazy seq，而在我的场景 里，这样的 map 是十分庞大的，包含几百万的数据。
 
@@ -26,7 +27,8 @@ Clojure 里的 `apply` 是十分常用的一个函数，它可以方便地让我
 
 重点来了：通过分析 `apply` 的源代码，我发现对于变参函数， `apply` 会将 整个seq 全部 realize 之后放到一个 Object 数组里，再调用目标函数：
 
-<pre class="example">static public Object applyToHelper(IFn ifn, ISeq arglist) {
+```java
+static public Object applyToHelper(IFn ifn, ISeq arglist) {
         switch(RT.boundedLength(arglist, 20))
         {
         case 0:
@@ -70,8 +72,7 @@ Clojure 里的 `apply` 是十分常用的一个函数，它可以方便地让我
                     , RT.seqToArray(Util.ret1(arglist.next(),arglist = null)));
         }
 }
-
-</pre>
+```
 
 就是最后一行的那个 `seqToArray` 将 arglist 的剩余部分全部放到一个 `Object[]` 的。
 
@@ -79,18 +80,20 @@ Clojure 里的 `apply` 是十分常用的一个函数，它可以方便地让我
 
 后来我将这里的 `apply` 替换成了 `into` ，在生产环境同样的 JVM 配置和输 入数据下，运行成功。
 
-<pre class="example">(into {} (map vec (partition 2 (coll-thaw! s))))
-</pre>
+```clojure
+(into {} (map vec (partition 2 (coll-thaw! s))))
+```
 
 其实 nippy 的作者在其他几类数据结构的反序列化中里使用了 `into` ，不知何 故在 map 这要用 `apply` （list 那如果用 `into` 会导致顺序颠倒，暂时没想 到好办法解决）：
 
-<pre class="example">id-list    (apply list (coll-thaw! s))
+```clojure
+id-list    (apply list (coll-thaw! s))
 id-vector  (into  [] (coll-thaw! s))
 id-set     (into #{} (coll-thaw! s))
 id-map     (apply hash-map (coll-thaw! s))
 id-coll    (doall (coll-thaw! s))
 id-queue   (into  (PersistentQueue/EMPTY) (coll-thaw! s))
-</pre>
+```
 
 我 fork 了[这个项目][3]，修正了这个问题并提了个[Pull Request][4]，看会不会被接 受。
 

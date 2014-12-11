@@ -25,9 +25,10 @@ tags:
       第一个选择是禁用自动补全并设定一个触发按键，比如 <code>TAB</code> 。这个很简单，只需 要两行代码：
     </p>
     
-    <pre class="example">(setq ac-auto-start nil)
+```cl
+(setq ac-auto-start nil)
 (ac-set-trigger-key "TAB")
-</pre>
+```
     
     <p>
       其中 <code>ac-auto-start</code> 还可以被设定为一个指定的数字，这种情况下只有连续 输入了指定数目的字符以后才会开始自动补全。
@@ -49,8 +50,9 @@ tags:
       翻看了一下auto-complete的文档，发现其中核心的函数 <code>auto-complete</code> 是支 持参数的：
     </p>
     
-    <pre class="example">(auto-complete &optional SOURCES)
-</pre>
+```cl
+(auto-complete &optional SOURCES)
+```
     
     <p>
       其中 <code>SOURCES</code> 是一个complete source列表，如果没有指定此参数， <code>auto-complete</code> 会使用buffer局部的 <code>ac-sources</code> 变量。一般情况下，我们 都是针对它去做配置。但我想达到的效果是：自动触发的补全，使用速度较快的 sources，而速度较慢的sources，我希望手动触发补全。所以需要做两件事：
@@ -69,7 +71,8 @@ tags:
       废话不多说，下面是这部分的代码：
     </p>
     
-    <pre class="example">;; 下面的两行代码要去掉，因为ac-nrepl-setup会将自身
+```cl
+;; 下面的两行代码要去掉，因为ac-nrepl-setup会将自身
 ;; 的source加入到ac-sources里
 ;;(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 ;;(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
@@ -89,7 +92,7 @@ tags:
 (add-hook 'nrepl-interaction-mode-hook
           (lambda ()
             (local-set-key (kbd "C-M-/") 'clojure-complete)))
-</pre>
+```
     
     <p>
       很简单，就是新写了个 <code>clojure-complete</code> 函数，里面使用ac-nrepl的source 来调用 <code>auto-complete</code> ，然后将它绑定到nrepl mode的 <code>C-M-/</code> 上了。原来 的配置里setup的部分 <b>一定要去掉</b> ，否则 <code>ac-sources</code> 里还是有ac-nrepl的 那些source，问题依旧。

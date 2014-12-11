@@ -33,8 +33,9 @@ tags:
     <p>
       我深知想用好Emacs，对插件的管理十分重要，好在Emacs24已经自带了package.el。这两天 试用了一下感觉还是不错的，虽然功能还不算很完备，但我认为够用了。我安装了 emacs-starter-kit，并按照它的建议，在我的init.el里把自己常用的插件列举出来，并自动检查 是否需要下载。
     </p>
-    
-    <pre lang="lisp">(add-to-list 'package-archives
+
+```cl
+(add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
@@ -56,18 +57,20 @@ tags:
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
-</pre>
+```
     
     <p>
       另外在参考了几篇关于Emacs配置的文章以后，我想出来一个自己的配置管理方案： 在~/.emacs.d/目录下建立available.d和enabled.d两个子目录，其中available.d里面放配 置文件，需要启用符号链接到enabled.d里面。这个方案简单有效，先用一阵看看，等更熟悉 了以后再慢慢研究更好的方案。
     </p>
-    
-    <pre lang="lisp">(mapc 'load (directory-files
+
+```cl
+(mapc 'load (directory-files
               (concat user-emacs-directory "enabled.d")
               t
               "\\.el$"))
-</pre>
-  </div>
+```
+
+</div>
 </div>
 
 <div id="outline-container-3" class="outline-4">
@@ -91,8 +94,9 @@ tags:
     <p>
       会一点Lisp的好处之一就是从一开始我就可以尝试hack Emacs。昨天使用了一会Emacs后， 我就发现一个想自己hack出来的功能——Vim里的O和o，即在当前行之前/之后插入新行并将光标移动过去。我找了GNU官方的elisp教程翻了下，顺利实现了这个功能并绑定到C-o和M-o上， 用着很舒服，哈哈。
     </p>
-    
-    <pre lang="lisp">(defun start-newline-next ()
+
+```cl
+(defun start-newline-next ()
   (interactive)
   (end-of-line)
   (newline-and-indent))
@@ -104,7 +108,8 @@ tags:
 
 (global-set-key (kbd "C-o") 'start-newline-next)
 (global-set-key (kbd "M-o") 'start-newline-prev)
-</pre>
+```
+
   </div>
 </div>
 

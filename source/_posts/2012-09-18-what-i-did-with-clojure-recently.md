@@ -23,18 +23,16 @@ tags:
     <p>
       最近的业余时间很多都贡献给了<a href="https://github.com/moonranger/clj.tr069">clj.tr069</a>这个项目——一个学习Clojure用的习作。 在里面有我写的第一个DSL，用来描述TR-069协议里的数据类型。这个DSL看起来 是这样的：
     </p>
-    
-    <pre lang="clojure">; Inform
-(deftr069type
-  ^:top-level
-  Inform
-  (device-id      :child       <img src='http://jerrypeng.me/wp-includes/images/smilies/icon_biggrin.gif' alt=':D' class='wp-smiley' /> eviceId)
+
+```clojure
+(deftr069type ^:top-level Inform
+  (device-id      :child       :DeviceId)
   (events         :child-array :Event         :EventStruct)
-  (parameter-list :child-array <img src='http://jerrypeng.me/wp-includes/images/smilies/icon_razz.gif' alt=':P' class='wp-smiley' /> arameterList <img src='http://jerrypeng.me/wp-includes/images/smilies/icon_razz.gif' alt=':P' class='wp-smiley' /> arameterValueStruct)
+  (parameter-list :child-array :ParameterValueStruct)
   (retry-count    :int         :RetryCount)
   (current-time   :dateTime    :CurrentTime)
   (max-envelopes  :int         :MaxEnvelopes))
-</pre>
+```
     
     <p>
       这样一段代码描述了TR-069的数据类型Inform，其中列出了每个字段，它的类型 以及相应的tag名称。deftr069type是个宏，展开后其实是一个defrecord和一个 multimethod的实现部分。其中defrecord定义了Clojure的数据类型并实现了一个 用来产生SOAP XML的protocol，而multimethod部分则实现了从SOAP XML提取出字 段并创建对象。
@@ -59,8 +57,9 @@ tags:
     <p>
       具体的需求还没下来，我只能先做一些准备工作。正好最近在学Clojure，遂决 定写个HTTP日志分析的小demo玩一下。半个下午的时间给弄出来一个东西，用来 分析nginx的日志，计算出每个IP的访问次数并按顺序排列。核心的代码如下：
     </p>
-    
-    <pre lang="clojure">(defn parse-ip-freq
+
+```clojure
+(defn parse-ip-freq
   "Parse a nginx log to get IP frequency data"
   [file black-list]
   (let [lines (buffered-line-seq file)
@@ -85,13 +84,14 @@ tags:
                       (aggregation identity count))))
          (reduce (partial merge-with +))
          (sort-by (comp - second)))))
-</pre>
+```
     
     <p>
       第一个是单线程的版本，第二个是基于pmap实现的多线程版本。在我的i3处理器 上测试，后者的速度是前者的两倍，和预期的一样：
     </p>
-    
-    <pre lang="clojure">user> (pprint
+
+```clojure
+user> (pprint
         (time (take 3 (parse-ip-freq
                         "/home/jerry/documents/blog.access.log"
                         ["216.24.201.214" "60.30.32.20"]))))
@@ -110,7 +110,7 @@ nil
 (["218.240.38.162" 6338]
  ["204.236.246.95" 4656]
  ["174.129.46.176" 4436])
-</pre>
+```
     
     <p>
       可以看到多线程版本的代码并不比单线程的复杂多少，唯一多出来的就是两点：

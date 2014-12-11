@@ -18,7 +18,8 @@ tags:
 
 我们的应用是跑在64位的Red Hat Enterprise Linux上的，Heap配置为1G。在那天release跑BAT测试用例的时候，发现不定期地系统会开始不工作，一查后台的日志，能发现不少OutOfMemoryError的异常，如下：
 
-<pre>java.lang.OutOfMemoryError
+```
+java.lang.OutOfMemoryError
 	java.util.zip.ZipFile.open(Native Method)
 	java.util.zip.ZipFile.(ZipFile.java:112)
 	java.util.jar.JarFile.(JarFile.java:127)
@@ -26,7 +27,7 @@ tags:
 	org.apache.catalina.loader.WebappClassLoader.openJARs(WebappClassLoader.java:1544)
 	org.apache.catalina.loader.WebappClassLoader.findResourceInternal(WebappClassLoader.java:1763)
 	...
-</pre>
+```
 
 异常是在ClassLoader打开jar文件以做类加载时抛出的，看堆栈跟踪发现与具体加载的类无关，是随机出现的。Google了一番，发现ZipFile类在打开文件的时候用的是本地内存而不是Java堆（所以OOM后面没有说是heap space）。我用pmap来看了一下进程的内存占用信息，发现竟然能占用到3G多！Heap Space才1G，内存却占用有3G，而且我们没有用DirectBuffer之类的需要占用堆外内存的类，所以我们推测应该是有线程泄漏的情况：每个Java线程都需要堆栈空间，而堆栈空间的确是Java Heap之外的。我们没有改-Xss参数，即线程堆栈大小为默认的1M，所以内存占用有3G，说明系统中存在这大量的线程（几千个）。
 
@@ -38,9 +39,10 @@ tags:
 
  开始怀疑这个以后，用file命令查了一下系统JRE里的java可执行文件，结果是：
 
-<pre>[root@X64_213 bin]# file java
+```
+[root@X64_213 bin]# file java
 java: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), for GNU/Linux 2.2.5, dynamically linked (uses shared libs), for GNU/Linux 2.2.5, stripped
-</pre>
+```
 
  果然和自己怀疑的一样。
 
@@ -71,7 +73,8 @@ java: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), for GNU/Linux 2.
 
 我们写了一段测试代码，直接调用我们代码里使用了jain-sip-ri的部分，果然重现了大量创建线程的问题，于是用btrace跟踪了一下所有调用了java.util.Timer构造方法的地方，脚本如下：
 
-<pre lang="java">@BTrace public class NewTimer {
+```java
+@BTrace public class NewTimer {
 
     @OnMethod(
       clazz="java.util.Timer",
@@ -83,30 +86,31 @@ java: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), for GNU/Linux 2.
     }
 
 }
-</pre>
+```
 
 运行后的结果如下：
 
-<pre>----------------------------------------
+```
 java.util.Timer.(Timer.java:106)
-gov.nist.javax.sip.stack.BlockingQueueDispatchAuditor.start(BlockingQueueDispatchAuditor.java:25)
-gov.nist.javax.sip.stack.UDPMessageProcessor.(UDPMessageProcessor.java:134)
-gov.nist.javax.sip.stack.OIOMessageProcessorFactory.createMessageProcessor(OIOMessageProcessorFactory.java:46)
-gov.nist.javax.sip.stack.SIPTransactionStack.createMessageProcessor(SIPTransactionStack.java:2372)
-gov.nist.javax.sip.SipStackImpl.createListeningPoint(SipStackImpl.java:1371)
-gov.nist.javax.sip.SipStackImpl.createListeningPoint(SipStackImpl.java:1537)
-com.workssys.share.oma.SipLayer.createPrivider(SipLayer.java:290)
-</pre>
+    gov.nist.javax.sip.stack.BlockingQueueDispatchAuditor.start(BlockingQueueDispatchAuditor.java:25)
+    gov.nist.javax.sip.stack.UDPMessageProcessor.(UDPMessageProcessor.java:134)
+    gov.nist.javax.sip.stack.OIOMessageProcessorFactory.createMessageProcessor(OIOMessageProcessorFactory.java:46)
+    gov.nist.javax.sip.stack.SIPTransactionStack.createMessageProcessor(SIPTransactionStack.java:2372)
+    gov.nist.javax.sip.SipStackImpl.createListeningPoint(SipStackImpl.java:1371)
+    gov.nist.javax.sip.SipStackImpl.createListeningPoint(SipStackImpl.java:1537)
+    com.workssys.share.oma.SipLayer.createPrivider(SipLayer.java:290)
+```
 
 根源就在这个BlockingQueueDispatchAuditor里了，于是下载了一份源代码，找到了相应的方法，如下：
 
-<pre lang="java">public void start(int interval) {
+```java
+public void start(int interval) {
    if(started) stop();
    started = true;
    timer = new Timer();
    timer.scheduleAtFixedRate(this, interval, interval);
 }
-</pre>
+```
 
 每次启动的时候BlockingQueueDispatchAuditor都会创建一个Timer。继续顺着stack trace定位上层的代码，有如下发现：
 
@@ -130,7 +134,8 @@ com.workssys.share.oma.SipLayer.createPrivider(SipLayer.java:290)
 
 <del>我Download下来这个包的源代码，在里面搜索Timer，结果找到了一个叫DefaultSipTimer的类，正好就是java.util.Timer的子类。接着搜索引用了这个类的地方，找到了一个叫SipStackImpl的类里的两处引用，一处是在构造函数里：</del>
 
-<pre lang="java">String defaultTimerName = configurationProperties.getProperty("gov.nist.javax.sip.TIMER_CLASS_NAME",DefaultSipTimer.class.getName());
+```java
+String defaultTimerName = configurationProperties.getProperty("gov.nist.javax.sip.TIMER_CLASS_NAME",DefaultSipTimer.class.getName());
 try {
     setTimer((SipTimer)Class.forName(defaultTimerName).newInstance());
     getTimer().start(this, configurationProperties);
@@ -141,11 +146,12 @@ try {
 } catch (Exception e) {
     logger.logError("Bad configuration value for gov.nist.javax.sip.TIMER_CLASS_NAME", e);
 }
-</pre>
+```
 
 <del>另一处在一个叫reInitialize的方法：</del>
 
-<pre lang="java">if(!getTimer().isStarted()) {
+```java
+if(!getTimer().isStarted()) {
     String defaultTimerName = configurationProperties.getProperty("gov.nist.javax.sip.TIMER_CLASS_NAME",DefaultSipTimer.class.getName());
     try {
         setTimer((SipTimer)Class.forName(defaultTimerName).newInstance());
@@ -158,7 +164,7 @@ try {
         logger.logError("Bad configuration value for gov.nist.javax.sip.TIMER_CLASS_NAME", e);
     }
 }
-</pre>
+```
 
 <del>仔细想一下就能发现这里有个严重的漏洞，如果Timer还没有被启动，就会在这里被重新创建，但同时原来的Timer没有被Cancel掉，其实还是存在的，对应的TimerThread线程也还在跑。所以只要因为某个原因让reInitialize这个方法被不断调用，就会发生无限创建线程的状况！</del>
 
