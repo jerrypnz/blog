@@ -1,28 +1,30 @@
 ---
-title: About
+title: About Me
 layout: page
 comments: true
 sharing: true
 footer: true
 ---
-Jerry、游侠之心、moonranger，这些都是我常用的网络ID。我是85后 IT 男，北漂湖北人，曾
-在电信行业工作多年，目前在[自由飞越](http://www.ufeifan.com)从事国际机票检索引擎相关工作。
+
+Jerry、游侠之心、moonranger，这些都是我常用的网络ID。我是 85 后 IT 男，
+湖北人，曾在电信行业工作多年，也从事过一段时间 OTA 在线旅游产品的研发，
+目前人在奥克兰，就职于一家
+[工程师文化十足的公司](http://movio.co/career/)，快乐地享受着这里的空
+气、风景、食物和工作。
 
 业余时间喜欢研究众多编程技术，其中：
 
-*   极度欣赏 UNIX 哲学，爱玩 Linux，除了娱乐之外不愿碰 M$ Windows
-*   Clojure 狂热分子，恨不得用它替代 Java 写所有的生产代码
-*   Lisp 控——虽然基本没写过“正统”的 Lisp 代码
-*   混饭工具 Java 也正在深入学习中，目前在研究JVM原理、GC 和 Performance Tuning 中
-*   Python 爱好者
-*   对Web开发略有涉足，HTML，JavaScript和CSS略有了解
-*   前 Vimer，现 Emacser
+- Clojure 狂热分子和实践者
+- 对静态函数式语言如 Haskell 和 Scala 有兴趣并在学习中
+- Lisp 控——虽然基本没写过“正统”的 Lisp 代码
+- Python 爱好者
+- 极度欣赏 UNIX 哲学，爱玩 Linux 但现已叛逃至 OS X，除了娱乐之外不愿碰
+  M$ Windows
+- 对 Web 开发略有涉足，HTML，JavaScript 和 CSS 略有了解
+- 前 Vimer，现 [Emacser](https://github.com/moonranger/dotemacs)
 
 联系方式：
 
-*   GTalk & Gmail: pr2jerry[AT]gmail.com
-*   MSN: c_jerry[AT]126.com
-*   Twitter: <a href="https://twitter.com/moonranger" target="_blank">moonranger</a>
-*   Weibo: <a href="http://weibo.com/moonranger" target="_blank">游侠之心0</a>
-*   QQ: 43961207 (不常上）
-*   Skype: jerry860510
+- Mail: pr2jerry [AT] gmail
+- Twitter: [moonranger](https://twitter.com/moonranger)
+- Weibo: [moonranger](http://weibo.com/moonranger)
