@@ -3,7 +3,7 @@ layout: post
 title: 加入 Mac 神教
 date: 2014-09-03 14:39:27 +0800
 comments: true
-categories: 技术
+categories: Tech
 keywords: Mac Book Pro, MBP, OS X
 description: 咬牙入了 2014 新款 MBP，从此加入 Mac 神教
 ---

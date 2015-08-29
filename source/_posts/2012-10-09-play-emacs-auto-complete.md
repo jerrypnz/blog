@@ -5,7 +5,7 @@ comments: true
 layout: post
 permalink: /2012/10/play-emacs-auto-complete/
 categories:
-  - 技术
+  - Tech
 tags:
   - auto-complete
   - Clojure

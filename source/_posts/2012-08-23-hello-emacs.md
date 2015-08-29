@@ -5,7 +5,7 @@ comments: true
 layout: post
 permalink: /2012/08/hello-emacs/
 categories:
-  - 技术
+  - Tech
 tags:
   - Editor
   - Emacs

@@ -5,8 +5,8 @@ comments: true
 layout: post
 permalink: /2013/07/notes-about-data-recovery/
 categories:
-  - UNIX/Linux
-  - 技术
+  - Linux
+  - Tech
 tags:
   - Ext3
   - InnoDB

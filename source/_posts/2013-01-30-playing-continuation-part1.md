@@ -5,7 +5,7 @@ comments: true
 layout: post
 permalink: /2013/01/playing-continuation-part1/
 categories:
-  - 技术
+  - Tech
 tags:
   - Clojure
   - Continuation

@@ -3,7 +3,7 @@ layout: post
 title: 半年 Scala 小感——Monad 篇
 date: 2015-08-27 10:38:49 +0800
 comments: true
-categories: Tech
+categories: Scala
 tags: Scala, FP, Monad
 keywords: Scala, FP, Monad
 description: 在新公司使用 Scala 小半年了，对其了解逐渐深入，现在是时候 聊聊我对这个语言的感觉了。这一次先说我喜欢的地方：ADT 和 Monad。

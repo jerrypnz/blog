@@ -6,7 +6,7 @@ layout: post
 permalink: /2012/12/use-apply-with-caution/
 categories:
   - Clojure
-  - 技术
+  - Tech
 tags:
   - Clojure
   - FP

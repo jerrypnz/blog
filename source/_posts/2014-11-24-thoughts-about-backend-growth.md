@@ -3,7 +3,7 @@ layout: post
 title: 对后端系统规模上升的一些思考
 date: 2014-11-24 10:14:19 +0800
 comments: true
-categories: 技术
+categories: Tech
 tags: Docker, Service Discovery, Zookeeper, etcd
 keywords: Docker, Service Discovery, Zookeeper, etcd
 description: 公司的服务器越来越多，上面运行的服务也越来越多，运维越来越复杂，应对故障的响应速度也不够。这篇文件记录下自己的一些研究和思考，主要关于 Docker、服务发现、配置管理等。

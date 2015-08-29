@@ -6,7 +6,7 @@ layout: post
 permalink: /2014/02/python-2-unicode-print-pitfall/
 categories:
   - Python
-  - 技术
+  - Tech
 tags:
   - Python
   - Unicode

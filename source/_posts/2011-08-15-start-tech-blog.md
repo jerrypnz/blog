@@ -7,7 +7,7 @@ permalink: /2011/08/start-tech-blog/
 views:
   - 275
 categories:
-  - 技术
+  - Tech
 tags:
   - Blog
 ---

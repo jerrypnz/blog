@@ -6,7 +6,7 @@ layout: post
 permalink: /2012/03/python-unicode-format-pitfall/
 categories:
   - Python
-  - 技术
+  - Tech
 tags:
   - Python
   - Unicode

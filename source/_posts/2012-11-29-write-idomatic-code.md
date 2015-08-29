@@ -6,7 +6,7 @@ layout: post
 permalink: /2012/11/write-idomatic-code/
 categories:
   - Java
-  - 技术
+  - Tech
 tags:
   - Clojure
   - Idiomatic

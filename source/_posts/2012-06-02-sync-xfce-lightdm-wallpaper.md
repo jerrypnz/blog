@@ -5,8 +5,8 @@ comments: true
 layout: post
 permalink: /2012/06/sync-xfce-lightdm-wallpaper/
 categories:
-  - Life Hack
-  - UNIX/Linux
+  - Tech
+  - Linux
 tags:
   - LightDM
   - Linux

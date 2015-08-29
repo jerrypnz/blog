@@ -6,7 +6,7 @@ layout: post
 permalink: /2012/09/what-i-did-with-clojure-recently/
 categories:
   - Clojure
-  - 技术
+  - Tech
 tags:
   - Clojure
   - TR-069

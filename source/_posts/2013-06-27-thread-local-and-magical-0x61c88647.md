@@ -6,7 +6,7 @@ layout: post
 permalink: /2013/06/thread-local-and-magical-0x61c88647/
 categories:
   - Java
-  - 技术
+  - Tech
 tags:
   - Concurrency
   - Java

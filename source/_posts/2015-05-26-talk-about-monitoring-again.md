@@ -3,7 +3,7 @@ layout: post
 title: 再聊监控
 date: 2015-05-26 20:30:44 +1200
 comments: true
-categories: 技术
+categories: Tech
 tags: monitoring, riemann, influxdb, grafana
 keywords: monitoring, riemann, influxdb, grafana
 description: 在新公司再次研究监控系统，这次使用了一套完全不同的方案。

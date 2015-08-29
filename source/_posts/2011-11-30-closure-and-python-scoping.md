@@ -6,7 +6,7 @@ layout: post
 permalink: /2011/11/closure-and-python-scoping/
 categories:
   - Python
-  - 技术
+  - Tech
 tags:
   - Closure
   - FP

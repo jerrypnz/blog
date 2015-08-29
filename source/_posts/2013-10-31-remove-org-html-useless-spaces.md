@@ -5,7 +5,7 @@ comments: true
 layout: post
 permalink: /2013/10/remove-org-html-useless-spaces/
 categories:
-  - 技术
+  - Tech
 tags:
   - Emacs
   - org-mode

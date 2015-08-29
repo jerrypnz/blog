@@ -5,7 +5,7 @@ comments: true
 layout: post
 permalink: /2012/02/one-week-pomodoro-experience/
 categories:
-  - Life Hack
+  - Life
 tags:
   - GTD
   - Pomodoro

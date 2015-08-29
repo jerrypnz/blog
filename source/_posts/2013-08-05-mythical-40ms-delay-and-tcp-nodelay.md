@@ -5,8 +5,8 @@ comments: true
 layout: post
 permalink: /2013/08/mythical-40ms-delay-and-tcp-nodelay/
 categories:
-  - UNIX/Linux
-  - 技术
+  - Linux
+  - Tech
 tags:
   - breeze
   - C

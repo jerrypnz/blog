@@ -4,7 +4,7 @@ title: 对 MongoDB 的一些吐槽
 date: 2014-06-13 17:32:02 +0800
 comments: true
 categories:
-  - 技术
+  - Tech
 tags:
   - MongoDB
 keywords: MongoDB, NoSQL, Database

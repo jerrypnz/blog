@@ -5,8 +5,8 @@ comments: true
 layout: post
 permalink: /2013/08/mojibake-caused-by-cron/
 categories:
-  - UNIX/Linux
-  - 技术
+  - Linux
+  - Tech
 tags:
   - cron
   - crontab

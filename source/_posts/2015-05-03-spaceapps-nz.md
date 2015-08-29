@@ -3,7 +3,7 @@ layout: post
 title: Space Apps 黑客马拉松
 date: 2015-05-03 21:42:22 +1200
 comments: true
-categories: 技术
+categories: Tech
 tags: hackathon, Auckland, NASA, Spaceapps
 keywords: hackathon, Auckland, NASA, Spaceapps
 description: 上个月 12 号，我和两个同事参加了 NASA 举办的 Space Apps 黑客马拉松活动。这辈子第一次参加类似活动，感触良多，收获也很多。

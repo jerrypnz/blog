@@ -3,7 +3,7 @@ layout: post
 title: 苹果令人担忧的软件质量
 date: 2015-01-04 09:06:03 +0800
 comments: true
-categories: 生活
+categories: Life
 tags: 苹果, iOS, OS X, Apple
 keywords: 苹果, iOS, OS X, Apple, iPhone, Mac
 description: 感觉苹果的软件质量在下滑，不禁让人担忧。

@@ -5,7 +5,7 @@ comments: true
 layout: post
 permalink: /2011/12/sphinx-chinese-pdf/
 categories:
-  - 技术
+  - Tech
 tags:
   - LaTeX
   - reStructuredText

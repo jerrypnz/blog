@@ -4,7 +4,7 @@ title: 域名转移到 Name Cheap 了
 date: 2014-06-16 17:14:54 +0800
 comments: true
 categories:
-  - 技术
+  - Tech
 tags:
   - GoDaddy
   - Namecheap

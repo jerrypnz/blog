@@ -6,7 +6,7 @@ layout: post
 permalink: /2013/02/java-generics-invariant-and-inference/
 categories:
   - Java
-  - 技术
+  - Tech
 tags:
   - Generics
   - Java

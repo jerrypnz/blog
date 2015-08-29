@@ -6,7 +6,7 @@ layout: post
 permalink: /2012/06/start-java-service-the-right-way/
 categories:
   - Java
-  - 技术
+  - Tech
 tags:
   - Java
   - Python

@@ -5,7 +5,7 @@ comments: true
 layout: post
 permalink: /2012/01/nginx-wp-permlink/
 categories:
-  - 技术
+  - Tech
 tags:
   - Blog
   - nginx

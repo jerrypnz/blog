@@ -3,7 +3,7 @@ layout: post
 title: 婚了
 date: 2014-11-02 22:10:46 +0800
 comments: true
-categories: 生活
+categories: Life
 tags: 生活, 婚姻, 塞班
 description: 10月3日我终于和自己心爱的人步入了婚姻的殿堂，生命之诗翻开了新的篇章，愿它依旧精彩。
 ---

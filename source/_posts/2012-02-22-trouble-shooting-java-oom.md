@@ -6,7 +6,7 @@ layout: post
 permalink: /2012/02/trouble-shooting-java-oom/
 categories:
   - Java
-  - 技术
+  - Tech
 tags:
   - btrace
   - Java

@@ -3,7 +3,7 @@ layout: post
 title: 撸了个玩具级 Lisp 解释器
 date: 2015-03-22 14:35:30 +1300
 comments: true
-categories: 技术
+categories: Java
 tags: Lisp, Java
 keywords: Lisp, Java
 description: 几个月开坑写了一个十分简单的 Lisp 解释器，最近终于完成比较核心的功能了。
